@@ -1,11 +1,11 @@
-# personalsite
+# The Neutral Core
 
-Fresh Deno project.
+A Deno-served editorial home page adapted from the supplied design.
 
 ## Commands
 
 ```sh
-deno run main.ts
+deno task start
 deno task dev
-deno test
+deno task test
 ```

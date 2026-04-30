@@ -1,8 +1,21 @@
-export function add(a: number, b: number): number {
-  return a + b;
+const homePage = new URL("./index.html", import.meta.url);
+
+export async function handler(request: Request): Promise<Response> {
+  const url = new URL(request.url);
+
+  if (url.pathname !== "/") {
+    return new Response("Not Found", { status: 404 });
+  }
+
+  const html = await Deno.readTextFile(homePage);
+
+  return new Response(html, {
+    headers: {
+      "content-type": "text/html; charset=utf-8",
+    },
+  });
 }
 
-// Learn more at https://docs.deno.com/runtime/manual/examples/module_metadata#concepts
 if (import.meta.main) {
-  console.log("Add 2 + 3 =", add(2, 3));
+  Deno.serve({ port: 8000 }, handler);
 }
