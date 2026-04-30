@@ -45,8 +45,30 @@
   <style>
     body {
       font-family: "Newsreader", serif;
-      background-color: #f6f6f8;
+      background-color: #f7f3eb;
       color: #101522;
+    }
+
+    .paper-texture {
+      background-color: #f7f3eb;
+      background-image:
+        radial-gradient(circle at 18% 24%, rgba(16, 21, 34, 0.045) 0 0.7px, transparent 0.8px),
+        radial-gradient(circle at 72% 68%, rgba(19, 81, 236, 0.025) 0 0.6px, transparent 0.7px),
+        radial-gradient(circle at 42% 82%, rgba(122, 102, 72, 0.035) 0 0.8px, transparent 0.9px),
+        linear-gradient(100deg, rgba(255, 255, 255, 0.55), rgba(238, 231, 218, 0.4)),
+        linear-gradient(0deg, rgba(16, 21, 34, 0.018) 50%, transparent 50%);
+      background-size: 17px 17px, 23px 23px, 29px 29px, 100% 100%, 4px 4px;
+      background-blend-mode: multiply, multiply, multiply, normal, multiply;
+    }
+
+    .paper-panel {
+      background-color: #f1eee6;
+      background-image:
+        radial-gradient(circle at 16% 35%, rgba(16, 21, 34, 0.04) 0 0.65px, transparent 0.75px),
+        radial-gradient(circle at 77% 62%, rgba(122, 102, 72, 0.035) 0 0.75px, transparent 0.85px),
+        linear-gradient(110deg, rgba(255, 255, 255, 0.36), rgba(230, 223, 211, 0.32));
+      background-size: 19px 19px, 31px 31px, 100% 100%;
+      background-blend-mode: multiply;
     }
 
     .grid-lines {
@@ -107,12 +129,12 @@
     }
   </style>
 </head>
-<body class="min-h-screen antialiased">
-  <div class="relative flex h-auto w-full flex-col bg-background-light group/design-root overflow-x-hidden">
+<body class="min-h-screen antialiased paper-texture">
+  <div class="relative flex h-auto w-full flex-col bg-background-light paper-texture group/design-root overflow-x-hidden">
     <div class="layout-container flex h-full grow flex-col">
       <div class="px-4 md:px-10 lg:px-20 xl:px-40 flex flex-1 justify-center py-0">
         <div class="layout-content-container flex flex-col w-full max-w-[1440px] flex-1 border-x border-solid border-[#e5e5e3]">
-          <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e5e5e3] px-6 py-4 h-16 sticky top-0 bg-background-light z-50">
+          <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e5e5e3] px-6 py-4 h-16 sticky top-0 bg-background-light paper-texture z-50">
             <div class="flex items-center gap-4 text-background-dark">
               <div class="size-5" aria-hidden="true">
                 <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -224,7 +246,7 @@
             </article>
 
             <article class="article-card group col-span-1 md:border-b-0 lg:border-b-0">
-              <div class="p-6 flex flex-col h-full bg-[#f1f1ef]">
+              <div class="p-6 flex flex-col h-full bg-[#f1f1ef] paper-panel">
                 <div class="flex items-center gap-2 mb-6">
                   <span class="tag-pill px-1.5 py-0.5 rounded text-[10px] bg-white">[ AI ]</span>
                   <span class="font-mono text-[10px] text-[#666] tracking-wider uppercase">11 MIN READ</span>
