@@ -22,6 +22,10 @@ Deno.test("serves the projects page", async () => {
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
   assertEquals(html.includes("Finance Project Archive"), true);
   assertEquals(html.includes("Whirlpool & Fletcher DCF Models"), true);
+  assertEquals(html.includes("Strategic In-Life Remediation and Customer Due Diligence"), true);
+  assertEquals(html.includes("NatWest Group / Risk Analytics"), true);
+  assertEquals(html.includes("[ METHODS ]"), false);
+  assertEquals(html.includes("[ OUTCOMES ]"), false);
   assertEquals(html.includes("Economic Regime Classification"), true);
   assertEquals(html.includes("Earnings Momentum Strategy"), true);
 });
