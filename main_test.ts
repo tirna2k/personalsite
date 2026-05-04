@@ -10,6 +10,7 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes("Tirna Chakraborty"), true);
   assertEquals(html.includes("Finance Analyst & Research Postgraduate"), true);
   assertEquals(html.includes("Risk & Remediation Analyst"), true);
+  assertEquals(html.includes('href="#certifications">Certifications'), true);
   assertEquals(html.includes("Analytics & Certifications"), true);
 });
 
