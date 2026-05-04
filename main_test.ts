@@ -9,9 +9,29 @@ Deno.test("serves the home page", async () => {
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
   assertEquals(html.includes("Tirna Chakraborty"), true);
   assertEquals(html.includes("Finance Analyst & Research Postgraduate"), true);
-  assertEquals(html.includes("Risk & Remediation Analyst"), true);
+  assertEquals(html.includes("Financial Crime Analyst"), true);
+  assertEquals(html.includes('href="/experience">Experience'), true);
   assertEquals(html.includes('href="/certifications">Certifications'), true);
   assertEquals(html.includes("Analytics & Certifications"), true);
+});
+
+Deno.test("serves the experience page", async () => {
+  const response = await handler(new Request("http://localhost/experience"));
+  const html = await response.text();
+
+  assertEquals(response.status, 200);
+  assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertEquals(html.includes("Experience"), true);
+  assertEquals(html.includes("Financial Crime Analyst (Risk and Remediation)"), true);
+  assertEquals(html.includes("Anti-Money Laundering & Counter-Terrorist Financing"), true);
+  assertEquals(html.includes("Customer Due Diligence & Transaction Monitoring"), true);
+  assertEquals(html.includes("Strategic In-Life Remediation & Customer Due Diligence"), false);
+  assertEquals(html.includes("Hospitality Graduate Trainee"), true);
+  assertEquals(html.includes("Massey University Investment Club"), true);
+  assertEquals(html.includes("Massey University Student Investment Fund"), true);
+  assertEquals(html.includes("Fund Manager"), true);
+  assertEquals(html.includes("View Related Projects"), false);
+  assertEquals(html.includes("supporting trade execution"), true);
 });
 
 Deno.test("serves the projects page", async () => {
