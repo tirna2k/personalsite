@@ -14,6 +14,18 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes("Analytics & Certifications"), true);
 });
 
+Deno.test("serves the projects page", async () => {
+  const response = await handler(new Request("http://localhost/projects"));
+  const html = await response.text();
+
+  assertEquals(response.status, 200);
+  assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertEquals(html.includes("Finance Project Archive"), true);
+  assertEquals(html.includes("Whirlpool & Fletcher DCF Models"), true);
+  assertEquals(html.includes("Economic Regime Classification"), true);
+  assertEquals(html.includes("Earnings Momentum Strategy"), true);
+});
+
 Deno.test("returns 404 for other paths", async () => {
   const response = await handler(new Request("http://localhost/missing"));
 
