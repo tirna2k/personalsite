@@ -1,4 +1,5 @@
 const homePage = new URL("./index.html", import.meta.url);
+const educationPage = new URL("./education.html", import.meta.url);
 const experiencePage = new URL("./experience.html", import.meta.url);
 const projectsPage = new URL("./projects.html", import.meta.url);
 const skillsPage = new URL("./skills.html", import.meta.url);
@@ -12,6 +13,16 @@ export async function handler(request: Request): Promise<Response> {
 
   if (url.pathname === "/") {
     const html = await Deno.readTextFile(homePage);
+
+    return new Response(html, {
+      headers: {
+        "content-type": "text/html; charset=utf-8",
+      },
+    });
+  }
+
+  if (url.pathname === "/education" || url.pathname === "/education/") {
+    const html = await Deno.readTextFile(educationPage);
 
     return new Response(html, {
       headers: {
