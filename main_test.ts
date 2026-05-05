@@ -11,6 +11,7 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes("Finance Analyst & Research Postgraduate"), true);
   assertEquals(html.includes("Financial Crime Analyst"), true);
   assertEquals(html.includes('href="/experience">Experience'), true);
+  assertEquals(html.includes('href="/skills">Skills'), true);
   assertEquals(html.includes('href="/certifications">Certifications'), true);
   assertEquals(html.includes("Analytics & Certifications"), true);
 });
@@ -32,6 +33,24 @@ Deno.test("serves the experience page", async () => {
   assertEquals(html.includes("Fund Manager"), true);
   assertEquals(html.includes("View Related Projects"), false);
   assertEquals(html.includes("supporting trade execution"), true);
+});
+
+Deno.test("serves the skills page", async () => {
+  const response = await handler(new Request("http://localhost/skills"));
+  const html = await response.text();
+
+  assertEquals(response.status, 200);
+  assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertEquals(html.includes("Skills Portfolio"), true);
+  assertEquals(html.includes("PUBLISHED"), false);
+  assertEquals(html.includes("SAVED"), false);
+  assertEquals(html.includes("Technical Skills"), true);
+  assertEquals(html.includes("Data & Analytics"), true);
+  assertEquals(html.includes("Process Improvement"), true);
+  assertEquals(html.includes("Risk Analysis"), true);
+  assertEquals(html.includes("Personal Skills"), true);
+  assertEquals(html.includes("Teamwork"), true);
+  assertEquals(html.includes("Problem Solving"), true);
 });
 
 Deno.test("serves the projects page", async () => {
