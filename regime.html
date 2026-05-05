@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Economic Regime Research - Tirna Chakraborty</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#10B981",
+            "background-light": "#f6f6f8",
+            "background-dark": "#101522",
+            "surface-light": "#ffffff",
+            "text-main": "#0d111b",
+            "text-muted": "#5c657a",
+            "border-color": "#e7ebf3",
+          },
+          fontFamily: {
+            display: ["Newsreader", "serif"],
+            body: ["Newsreader", "serif"],
+            heading: ["Instrument Serif", "serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: "Newsreader", serif;
+      background-color: #f6f6f8;
+      color: #0d111b;
+    }
+
+    ::selection {
+      background-color: #10b981;
+      color: #ffffff;
+    }
+
+    .drop-cap::first-letter {
+      font-family: "Instrument Serif", serif;
+      font-size: 4.5rem;
+      line-height: 0.8;
+      float: left;
+      margin-right: 0.75rem;
+      margin-top: 0.25rem;
+      color: #10b981;
+    }
+  </style>
+</head>
+<body class="bg-background-light text-text-main antialiased selection:bg-primary selection:text-white">
+  <div class="fixed left-0 top-0 z-50 h-1 bg-primary transition-all duration-150 ease-out" style="width: 100%;"></div>
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden group/design-root">
+    <div class="layout-container flex h-full grow flex-col">
+      <div class="flex flex-1 justify-center px-4 py-5 lg:px-8 xl:px-40">
+        <div class="layout-content-container relative flex w-full max-w-[960px] flex-1 flex-col">
+          <header class="mb-12 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-border-color px-4 py-3 sm:px-10">
+            <div class="flex items-center gap-4 text-text-main">
+              <div class="size-4" aria-hidden="true">
+                <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                  <path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+                </svg>
+              </div>
+              <h2 class="font-heading text-lg font-bold leading-tight tracking-[-0.015em] text-text-main">Tirna Chakraborty</h2>
+            </div>
+            <div class="flex flex-1 justify-end gap-8">
+              <nav class="hidden items-center gap-9 sm:flex" aria-label="Primary navigation">
+                <a class="text-sm font-medium leading-normal text-text-main transition-colors hover:text-primary" href="/">Home</a>
+                <a class="text-sm font-medium leading-normal text-primary transition-colors" href="/projects">Projects</a>
+                <a class="text-sm font-medium leading-normal text-text-main transition-colors hover:text-primary" href="/skills">Skills</a>
+                <a class="text-sm font-medium leading-normal text-text-main transition-colors hover:text-primary" href="/certifications">Certifications</a>
+              </nav>
+            </div>
+          </header>
+
+          <main class="relative flex w-full flex-row justify-center">
+            <aside class="sticky top-24 hidden h-max w-20 flex-col items-center gap-6 pt-4 lg:flex">
+              <div class="flex w-20 flex-col items-center gap-2 text-center">
+                <div class="rounded-full bg-border-color p-2.5 text-primary">
+                  <span class="material-symbols-outlined block text-current" style="font-size: 20px;">public</span>
+                </div>
+                <p class="font-mono text-xs uppercase tracking-wider text-text-muted">Macro</p>
+              </div>
+              <div class="flex w-20 flex-col items-center gap-2 text-center">
+                <div class="rounded-full bg-border-color p-2.5 text-primary">
+                  <span class="material-symbols-outlined block text-current" style="font-size: 20px;">conversion_path</span>
+                </div>
+                <p class="font-mono text-xs uppercase tracking-wider text-text-muted">Regime</p>
+              </div>
+              <div class="flex w-20 flex-col items-center gap-2 text-center">
+                <div class="rounded-full bg-border-color p-2.5 text-primary">
+                  <span class="material-symbols-outlined block text-current" style="font-size: 20px;">code</span>
+                </div>
+                <p class="font-mono text-xs uppercase tracking-wider text-text-muted">R</p>
+              </div>
+            </aside>
+
+            <article class="w-full max-w-[650px] px-4 sm:px-6">
+              <header class="mb-12">
+                <div class="mb-6 flex items-center gap-3">
+                  <span class="rounded border border-primary/20 bg-primary/5 px-2 py-1 font-mono text-xs uppercase tracking-widest text-primary">[ RESEARCH ]</span>
+                  <span class="font-mono text-xs text-text-muted">R / TIME SERIES / SIMILARITY SCORING</span>
+                </div>
+                <h1 class="font-heading mb-8 text-5xl leading-[1.1] tracking-tight text-text-main sm:text-6xl">Economic Regime Research</h1>
+                <div class="mb-8 flex items-center justify-between border-y border-border-color py-6">
+                  <div class="flex items-center gap-4">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-surface-light text-primary ring-1 ring-border-color">
+                      <span class="material-symbols-outlined">finance_mode</span>
+                    </div>
+                    <div>
+                      <p class="text-base font-medium text-text-main">Tirna Chakraborty</p>
+                      <p class="text-sm italic text-text-muted">Macro Research / Quantitative Finance</p>
+                    </div>
+                  </div>
+                  <time class="font-mono text-sm uppercase tracking-wider text-text-muted">Project Summary</time>
+                </div>
+              </header>
+
+              <div class="mb-16 space-y-6 text-[18px] leading-[28px] text-text-main">
+                <p class="drop-cap">This research project explores how changing macroeconomic conditions influence asset returns and whether these shifts can be used to improve return forecasting. Rather than relying solely on traditional asset pricing frameworks such as the Fama-French Five Factor Model, the study adopts a dynamic, data-driven approach that incorporates a broader set of economic indicators.</p>
+
+                <p>A comprehensive set of macro-financial state variables is constructed, including equity market performance, the yield curve, commodity prices such as oil and copper, monetary policy indicators, market volatility and stock-bond correlation. These variables are systematically transformed using rolling statistical techniques, including standardisation over a 10-year window and winsorisation, to ensure consistency and robustness across time.</p>
+
+                <figure class="my-10">
+                  <img alt="Macro shot of digital stock tickers and financial data streams" class="h-[400px] w-full rounded border border-border-color object-cover grayscale transition-all duration-500 hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBix8ZmBhcjBd9k6bXPhYLLEZJ3Dcl_s7liplgrUxc6VfYqxa1Lpc0YwK2JPgfcz6xkmbJQTZC4NJagwE0zDm-Grr2-h6SlUEx0F-l1QNnX_2ZNsOTMguTf-Cez76okhDiuMVR_iD096HJail6e5kA6UaMG_QJk99u5vf6C2MMDzB-1dYVazPmhgbkFuCGKpq24Nvxt6rRuBUoCSM3oSg17IDXxxTBzOczIGJGsMtdTWxFZZfU87DBuIQCI7CeXUOQek046q5puRVyc">
+                </figure>
+
+                <p>The core methodology is built around a distance-based similarity framework. For each point in time, the current economic environment is compared with historical periods using Euclidean distance. The most similar historical regimes are identified, and their subsequent returns are used to generate forward-looking expectations. This enables the model to adapt to evolving macroeconomic conditions rather than assuming static relationships between risk factors and returns.</p>
+
+                <blockquote class="my-10 border-l-4 border-primary pl-6 font-heading text-2xl italic leading-snug text-text-main">
+                  "The model treats macro context as a living state, comparing today's conditions with the historical periods they most closely resemble."
+                </blockquote>
+
+                <p>The framework is applied across multiple levels of financial analysis. At the factor level, timing strategies are implemented across key risk factors, including momentum, to evaluate whether regime-based signals can enhance performance. The analysis is further extended to industry portfolios and individual stocks, with predictive accuracy assessed using out-of-sample metrics such as mean squared error (MSE) and out-of-sample R^2.</p>
+
+                <p>Overall, the project highlights the importance of macroeconomic context in asset pricing and demonstrates how regime-aware modelling can improve forecasting performance. It also reflects strong capabilities in quantitative analysis, financial modelling and the application of advanced data techniques using R.</p>
+
+                <div class="my-8 overflow-hidden rounded-sm border border-border-color bg-surface-light">
+                  <div class="flex items-center border-b border-border-color bg-background-light px-4 py-2">
+                    <span class="font-mono text-xs uppercase tracking-wider text-text-muted">Method Snapshot</span>
+                  </div>
+                  <div class="grid grid-cols-1 gap-0 sm:grid-cols-3">
+                    <div class="border-b border-border-color p-4 sm:border-b-0 sm:border-r">
+                      <p class="font-mono text-xs uppercase tracking-wider text-primary">Variables</p>
+                      <p class="mt-2 text-base leading-snug text-text-muted">Yield curve, commodities, volatility, policy indicators and stock-bond correlation.</p>
+                    </div>
+                    <div class="border-b border-border-color p-4 sm:border-b-0 sm:border-r">
+                      <p class="font-mono text-xs uppercase tracking-wider text-primary">Similarity</p>
+                      <p class="mt-2 text-base leading-snug text-text-muted">Euclidean distance used to identify historical macro regimes most similar to the present.</p>
+                    </div>
+                    <div class="p-4">
+                      <p class="font-mono text-xs uppercase tracking-wider text-primary">Testing</p>
+                      <p class="mt-2 text-base leading-snug text-text-muted">Out-of-sample MSE and R^2 used to evaluate forecasting accuracy.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-12 flex items-center justify-center gap-8 border-t border-border-color py-8">
+                <a class="flex items-center gap-2 text-text-muted transition-colors hover:text-primary" href="/projects">
+                  <span class="material-symbols-outlined" style="font-size: 24px;">arrow_back</span>
+                  <span class="font-mono text-sm uppercase">Projects</span>
+                </a>
+                <a class="flex items-center gap-2 text-text-muted transition-colors hover:text-primary" href="https://outlook.live.com/mail/0/deeplink/compose?to=tirna.rcb%40gmail.com" target="_blank" rel="noopener noreferrer">
+                  <span class="material-symbols-outlined" style="font-size: 24px;">mail</span>
+                  <span class="font-mono text-sm uppercase">Contact</span>
+                </a>
+              </div>
+            </article>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
