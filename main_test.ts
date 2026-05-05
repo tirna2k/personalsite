@@ -13,6 +13,7 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes('href="/experience">Experience'), true);
   assertEquals(html.includes('href="/skills">Skills'), true);
   assertEquals(html.includes('href="/certifications">Certifications'), true);
+  assertEquals(html.includes("https://outlook.live.com/mail/0/deeplink/compose?to=tirna.rcb%40gmail.com"), true);
   assertEquals(html.includes("Analytics & Certifications"), true);
 });
 
