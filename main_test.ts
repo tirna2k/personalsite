@@ -16,6 +16,7 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes('href="/certifications">Certifications'), true);
   assertEquals(html.includes('href="/projects/whirlpool-fletcher-dcf"'), true);
   assertEquals(html.includes('href="/projects/economic-regime-research"'), true);
+  assertEquals(html.includes('href="/projects/earnings-momentum-strategy"'), true);
   assertEquals(html.includes("https://outlook.live.com/mail/0/deeplink/compose?to=tirna.rcb%40gmail.com"), true);
   assertEquals(html.includes("Analytics & Certifications"), true);
 });
@@ -73,6 +74,7 @@ Deno.test("serves the projects page", async () => {
   assertEquals(html.includes("Economic Regime Classification"), true);
   assertEquals(html.includes('href="/projects/economic-regime-research"'), true);
   assertEquals(html.includes("Earnings Momentum Strategy"), true);
+  assertEquals(html.includes('href="/projects/earnings-momentum-strategy"'), true);
 });
 
 Deno.test("serves the Whirlpool and Fletcher DCF model page", async () => {
@@ -104,6 +106,22 @@ Deno.test("serves the economic regime research page", async () => {
   assertEquals(html.includes("Euclidean distance"), true);
   assertEquals(html.includes("mean squared error (MSE)"), true);
   assertEquals(html.includes("advanced data techniques using R"), true);
+});
+
+Deno.test("serves the earnings momentum strategy page", async () => {
+  const response = await handler(
+    new Request("http://localhost/projects/earnings-momentum-strategy"),
+  );
+  const html = await response.text();
+
+  assertEquals(response.status, 200);
+  assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertEquals(html.includes("Earnings Momentum Strategy"), true);
+  assertEquals(html.includes("composite EPS based momentum score"), true);
+  assertEquals(html.includes("Methodology"), true);
+  assertEquals(html.includes("Results"), true);
+  assertEquals(html.includes("432.21%"), true);
+  assertEquals(html.includes("Sharpe ratio of 0.88"), true);
 });
 
 Deno.test("serves the certifications page", async () => {

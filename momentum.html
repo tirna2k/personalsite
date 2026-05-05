@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Earnings Momentum Strategy - Tirna Chakraborty</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#10B981",
+            "background-light": "#f6f6f8",
+            "background-dark": "#101522",
+            "surface-light": "#ffffff",
+            "text-main": "#0d111b",
+            "text-muted": "#5c657a",
+            "border-color": "#e7ebf3",
+          },
+          fontFamily: {
+            display: ["Newsreader", "serif"],
+            body: ["Newsreader", "serif"],
+            heading: ["Instrument Serif", "serif"],
+            mono: ["JetBrains Mono", "monospace"],
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem",
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: "Newsreader", serif;
+      background-color: #f6f6f8;
+      color: #0d111b;
+    }
+
+    ::selection {
+      background-color: #10b981;
+      color: #ffffff;
+    }
+
+    .drop-cap::first-letter {
+      font-family: "Instrument Serif", serif;
+      font-size: 4.5rem;
+      line-height: 0.8;
+      float: left;
+      margin-right: 0.75rem;
+      margin-top: 0.25rem;
+      color: #10b981;
+    }
+  </style>
+</head>
+<body class="bg-background-light text-text-main antialiased selection:bg-primary selection:text-white">
+  <div class="fixed left-0 top-0 z-50 h-1 bg-primary transition-all duration-150 ease-out" style="width: 100%;"></div>
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden group/design-root">
+    <div class="layout-container flex h-full grow flex-col">
+      <div class="flex flex-1 justify-center px-4 py-5 lg:px-8 xl:px-40">
+        <div class="layout-content-container relative flex w-full max-w-[960px] flex-1 flex-col">
+          <header class="mb-12 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-border-color px-4 py-3 sm:px-10">
+            <div class="flex items-center gap-4 text-text-main">
+              <div class="size-4" aria-hidden="true">
+                <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                  <path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+                </svg>
+              </div>
+              <h2 class="font-heading text-lg font-bold leading-tight tracking-[-0.015em] text-text-main">Tirna Chakraborty</h2>
+            </div>
+            <div class="flex flex-1 justify-end gap-8">
+              <nav class="hidden items-center gap-9 sm:flex" aria-label="Primary navigation">
+                <a class="text-sm font-medium leading-normal text-text-main transition-colors hover:text-primary" href="/">Home</a>
+                <a class="text-sm font-medium leading-normal text-primary transition-colors" href="/projects">Projects</a>
+                <a class="text-sm font-medium leading-normal text-text-main transition-colors hover:text-primary" href="/skills">Skills</a>
+                <a class="text-sm font-medium leading-normal text-text-main transition-colors hover:text-primary" href="/certifications">Certifications</a>
+              </nav>
+            </div>
+          </header>
+
+          <main class="relative flex w-full flex-row justify-center">
+            <aside class="sticky top-24 hidden h-max w-20 flex-col items-center gap-6 pt-4 lg:flex">
+              <div class="flex w-20 flex-col items-center gap-2 text-center">
+                <div class="rounded-full bg-border-color p-2.5 text-primary">
+                  <span class="material-symbols-outlined block text-current" style="font-size: 20px;">trending_up</span>
+                </div>
+                <p class="font-mono text-xs uppercase tracking-wider text-text-muted">EPS</p>
+              </div>
+              <div class="flex w-20 flex-col items-center gap-2 text-center">
+                <div class="rounded-full bg-border-color p-2.5 text-primary">
+                  <span class="material-symbols-outlined block text-current" style="font-size: 20px;">cycle</span>
+                </div>
+                <p class="font-mono text-xs uppercase tracking-wider text-text-muted">Rebalance</p>
+              </div>
+              <div class="flex w-20 flex-col items-center gap-2 text-center">
+                <div class="rounded-full bg-border-color p-2.5 text-primary">
+                  <span class="material-symbols-outlined block text-current" style="font-size: 20px;">analytics</span>
+                </div>
+                <p class="font-mono text-xs uppercase tracking-wider text-text-muted">Sharpe</p>
+              </div>
+            </aside>
+
+            <article class="w-full max-w-[650px] px-4 sm:px-6">
+              <header class="mb-12">
+                <div class="mb-6 flex items-center gap-3">
+                  <span class="rounded border border-primary/20 bg-primary/5 px-2 py-1 font-mono text-xs uppercase tracking-widest text-primary">[ PORTFOLIO ]</span>
+                  <span class="font-mono text-xs text-text-muted">S&P 500 / BACKTEST / RISK-ADJUSTED RETURNS</span>
+                </div>
+                <h1 class="font-heading mb-8 text-5xl leading-[1.1] tracking-tight text-text-main sm:text-6xl">Earnings Momentum Strategy</h1>
+                <div class="mb-8 flex items-center justify-between border-y border-border-color py-6">
+                  <div class="flex items-center gap-4">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-surface-light text-primary ring-1 ring-border-color">
+                      <span class="material-symbols-outlined">finance_mode</span>
+                    </div>
+                    <div>
+                      <p class="text-base font-medium text-text-main">Tirna Chakraborty</p>
+                      <p class="text-sm italic text-text-muted">Portfolio Strategy / Factor Investing</p>
+                    </div>
+                  </div>
+                  <time class="font-mono text-sm uppercase tracking-wider text-text-muted">2014 - 2024</time>
+                </div>
+              </header>
+
+              <div class="mb-16 space-y-6 text-[18px] leading-[28px] text-text-main">
+                <p class="drop-cap">Designed and back tested an active earnings momentum strategy using S&P 500 stocks, constructed a composite EPS based momentum score and implemented annual rebalancing. Applied quantitative portfolio construction and performance evaluation techniques including CAGR, volatility, Sharpe ratio and drawdown analysis. Demonstrated strong skills in financial analysis, factor-based investing, benchmarking and risk-adjusted return assessment.</p>
+
+                <figure class="my-10">
+                  <img alt="Professional financial data visualization showing market depth and liquidity concentration." class="h-[400px] w-full rounded border border-border-color object-cover grayscale transition-all duration-500 hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpxDBrtZOb2wBWoTF3B9wJNvUW-AXmlo0PiJLoJf1BNfYvk9Q6sMuEw7RDGmnG-6Sj2rgIwHuDHxOqAMi2jYmKskFvB-Lww-EWHSC10k7PDKPL0Rz1mCR7CspK9bnnPdvaPE36dRXoFVjpixwPBMoeBpnllH4-QMf81xnswUKSokURI-ez3j8RnP6yYvou1bhp_qdqklrvcqhSO7CJcUFpq6U3zY-pt0aAyktcRplahq5LYCVOr68g2u3Qvli3xPF6m25yqPtCxfUI">
+                </figure>
+
+                <section class="space-y-4">
+                  <h2 class="font-heading text-4xl leading-tight text-text-main">Methodology</h2>
+                  <p>The portfolio is constructed using an earnings momentum strategy applied to S&P 500 firms over the 2014-2024 period, with rebalancing at the start of each calendar year. The investment universe is restricted to S&P 500 constituents to ensure high liquidity, avoid size-related distortions and allow direct benchmarking against the index.</p>
+                  <p>For each year, a composite earnings momentum score is calculated for all eligible firms using quarterly EPS data available before January 1. This score is the Z-score sum of three components: year-over-year quarterly EPS growth, trailing twelve-month EPS growth and earnings growth acceleration. These metrics collectively capture the consistency, recency and rate of change in earnings performance.</p>
+                  <p>The top 10 firms with the highest composite scores are selected, equally weighted and held for a full 12-month period before the portfolio is rebalanced and reconstructed for the next year.</p>
+                </section>
+
+                <blockquote class="my-10 border-l-4 border-primary pl-6 font-heading text-2xl italic leading-snug text-text-main">
+                  "The strategy tests whether persistent and accelerating earnings growth can translate into durable excess return against the S&P 500."
+                </blockquote>
+
+                <section class="space-y-4">
+                  <h2 class="font-heading text-4xl leading-tight text-text-main">Results</h2>
+                  <p>The backtest shows that the earnings momentum strategy substantially outperformed the S&P 500 benchmark over the 10-year period. The strategy generated a total return of 432.21%, nearly doubling the benchmark's 224.90%, and delivered a significantly higher annualized return of 16.52% compared with the benchmark's 11.38%.</p>
+                  <p>Although the strategy exhibited slightly higher volatility at 18.82% versus 17.35%, the superior risk-adjusted performance is evident in its Sharpe ratio of 0.88, which exceeds the benchmark's 0.66. The maximum drawdown was deeper for the strategy at 38.54% versus 33.92%, reflecting the higher sensitivity of momentum-based portfolios during market stress.</p>
+                  <p>Overall, the results indicate that selecting firms with strong, persistent and accelerating earnings growth produced meaningful excess returns relative to the S&P 500, despite modestly higher risk.</p>
+                </section>
+
+                <div class="my-8 overflow-hidden rounded-sm border border-border-color bg-surface-light">
+                  <div class="flex items-center border-b border-border-color bg-background-light px-4 py-2">
+                    <span class="font-mono text-xs uppercase tracking-wider text-text-muted">Performance Snapshot</span>
+                  </div>
+                  <div class="grid grid-cols-1 gap-0 sm:grid-cols-3">
+                    <div class="border-b border-border-color p-4 sm:border-b-0 sm:border-r">
+                      <p class="font-mono text-xs uppercase tracking-wider text-primary">Total Return</p>
+                      <p class="mt-2 text-base leading-snug text-text-muted">432.21% strategy return versus 224.90% for the S&P 500 benchmark.</p>
+                    </div>
+                    <div class="border-b border-border-color p-4 sm:border-b-0 sm:border-r">
+                      <p class="font-mono text-xs uppercase tracking-wider text-primary">Sharpe</p>
+                      <p class="mt-2 text-base leading-snug text-text-muted">0.88 strategy Sharpe ratio compared with 0.66 for the benchmark.</p>
+                    </div>
+                    <div class="p-4">
+                      <p class="font-mono text-xs uppercase tracking-wider text-primary">Rebalance</p>
+                      <p class="mt-2 text-base leading-snug text-text-muted">Top 10 composite EPS momentum names selected annually and equally weighted.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-12 flex items-center justify-center gap-8 border-t border-border-color py-8">
+                <a class="flex items-center gap-2 text-text-muted transition-colors hover:text-primary" href="/projects">
+                  <span class="material-symbols-outlined" style="font-size: 24px;">arrow_back</span>
+                  <span class="font-mono text-sm uppercase">Projects</span>
+                </a>
+                <a class="flex items-center gap-2 text-text-muted transition-colors hover:text-primary" href="https://outlook.live.com/mail/0/deeplink/compose?to=tirna.rcb%40gmail.com" target="_blank" rel="noopener noreferrer">
+                  <span class="material-symbols-outlined" style="font-size: 24px;">mail</span>
+                  <span class="font-mono text-sm uppercase">Contact</span>
+                </a>
+              </div>
+            </article>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
