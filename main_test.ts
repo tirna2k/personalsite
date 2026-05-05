@@ -13,6 +13,7 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes('href="/experience">Experience'), true);
   assertEquals(html.includes('href="/skills">Skills'), true);
   assertEquals(html.includes('href="/certifications">Certifications'), true);
+  assertEquals(html.includes('href="/projects/whirlpool-fletcher-dcf"'), true);
   assertEquals(html.includes("https://outlook.live.com/mail/0/deeplink/compose?to=tirna.rcb%40gmail.com"), true);
   assertEquals(html.includes("Analytics & Certifications"), true);
 });
@@ -62,12 +63,29 @@ Deno.test("serves the projects page", async () => {
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
   assertEquals(html.includes("Finance Project Archive"), true);
   assertEquals(html.includes("Whirlpool & Fletcher DCF Models"), true);
+  assertEquals(html.includes('href="/projects/whirlpool-fletcher-dcf"'), true);
   assertEquals(html.includes("Strategic In-Life Remediation and Customer Due Diligence"), true);
   assertEquals(html.includes("NatWest Group / Risk Analytics"), true);
   assertEquals(html.includes("[ METHODS ]"), false);
   assertEquals(html.includes("[ OUTCOMES ]"), false);
   assertEquals(html.includes("Economic Regime Classification"), true);
   assertEquals(html.includes("Earnings Momentum Strategy"), true);
+});
+
+Deno.test("serves the Whirlpool and Fletcher DCF model page", async () => {
+  const response = await handler(
+    new Request("http://localhost/projects/whirlpool-fletcher-dcf"),
+  );
+  const html = await response.text();
+
+  assertEquals(response.status, 200);
+  assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertEquals(html.includes("Whirlpool & Fletcher DCF Models"), true);
+  assertEquals(html.includes("Whirlpool Corporation - Stock Analysis Overview"), true);
+  assertEquals(html.includes("Fletcher Building - Stock Analysis Overview"), true);
+  assertEquals(html.includes("Fig 1. Valuation work combined"), false);
+  assertEquals(html.includes("DCF, DDM and P/E multiple analysis"), true);
+  assertEquals(html.includes("Framework Snapshot"), true);
 });
 
 Deno.test("serves the certifications page", async () => {

@@ -3,6 +3,7 @@ const experiencePage = new URL("./experience.html", import.meta.url);
 const projectsPage = new URL("./projects.html", import.meta.url);
 const skillsPage = new URL("./skills.html", import.meta.url);
 const certificationsPage = new URL("./certifications.html", import.meta.url);
+const valuationPage = new URL("./valuation.html", import.meta.url);
 
 export async function handler(request: Request): Promise<Response> {
   const url = new URL(request.url);
@@ -19,6 +20,19 @@ export async function handler(request: Request): Promise<Response> {
 
   if (url.pathname === "/projects" || url.pathname === "/projects/") {
     const html = await Deno.readTextFile(projectsPage);
+
+    return new Response(html, {
+      headers: {
+        "content-type": "text/html; charset=utf-8",
+      },
+    });
+  }
+
+  if (
+    url.pathname === "/projects/whirlpool-fletcher-dcf" ||
+    url.pathname === "/projects/whirlpool-fletcher-dcf/"
+  ) {
+    const html = await Deno.readTextFile(valuationPage);
 
     return new Response(html, {
       headers: {
