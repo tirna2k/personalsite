@@ -1,4 +1,5 @@
 const homePage = new URL("./index.html", import.meta.url);
+const favicon = new URL("./favicon.svg", import.meta.url);
 const educationPage = new URL("./education.html", import.meta.url);
 const experiencePage = new URL("./experience.html", import.meta.url);
 const projectsPage = new URL("./projects.html", import.meta.url);
@@ -17,6 +18,17 @@ export async function handler(request: Request): Promise<Response> {
     return new Response(html, {
       headers: {
         "content-type": "text/html; charset=utf-8",
+      },
+    });
+  }
+
+  if (url.pathname === "/favicon.svg") {
+    const svg = await Deno.readTextFile(favicon);
+
+    return new Response(svg, {
+      headers: {
+        "cache-control": "public, max-age=86400",
+        "content-type": "image/svg+xml; charset=utf-8",
       },
     });
   }

@@ -8,6 +8,7 @@ Deno.test("serves the home page", async () => {
   assertEquals(response.status, 200);
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
   assertEquals(html.includes("Tirna Chakraborty"), true);
+  assertEquals(html.includes('href="/favicon.svg" rel="icon" type="image/svg+xml"'), true);
   assertEquals(html.includes("Finance Analyst & Research Postgraduate"), true);
   assertEquals(html.includes("Financial Crime Analyst"), true);
   assertEquals(html.includes("Open Financial Crime Analyst experience page"), true);
@@ -21,6 +22,16 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes('href="/projects/earnings-momentum-strategy"'), true);
   assertEquals(html.includes("https://outlook.live.com/mail/0/deeplink/compose?to=tirna.rcb%40gmail.com"), true);
   assertEquals(html.includes("Analytics & Certifications"), true);
+});
+
+Deno.test("serves the favicon", async () => {
+  const response = await handler(new Request("http://localhost/favicon.svg"));
+  const svg = await response.text();
+
+  assertEquals(response.status, 200);
+  assertEquals(response.headers.get("content-type"), "image/svg+xml; charset=utf-8");
+  assertEquals(svg.includes("<svg"), true);
+  assertEquals(svg.includes("Tirna Chakraborty site icon"), true);
 });
 
 Deno.test("serves the education page", async () => {
