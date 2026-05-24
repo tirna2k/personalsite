@@ -9,6 +9,7 @@ Deno.test("serves the home page", async () => {
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
   assertEquals(html.includes("Tirna Chakraborty"), true);
   assertEquals(html.includes('href="/favicon.svg" rel="icon" type="image/svg+xml"'), true);
+  assertEquals(html.includes('href="/site.css" rel="stylesheet"'), true);
   assertEquals(html.includes("Finance Analyst & Research Postgraduate"), true);
   assertEquals(html.includes("Financial Crime Analyst"), true);
   assertEquals(html.includes("Open Financial Crime Analyst experience page"), true);
@@ -32,6 +33,16 @@ Deno.test("serves the favicon", async () => {
   assertEquals(response.headers.get("content-type"), "image/svg+xml; charset=utf-8");
   assertEquals(svg.includes("<svg"), true);
   assertEquals(svg.includes("Tirna Chakraborty site icon"), true);
+});
+
+Deno.test("serves the shared stylesheet", async () => {
+  const response = await handler(new Request("http://localhost/site.css"));
+  const css = await response.text();
+
+  assertEquals(response.status, 200);
+  assertEquals(response.headers.get("content-type"), "text/css; charset=utf-8");
+  assertEquals(css.includes("--background-light: #f6f6f8"), true);
+  assertEquals(css.includes(".layout-content-container"), true);
 });
 
 Deno.test("serves the education page", async () => {
