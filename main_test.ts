@@ -1,12 +1,17 @@
 import { assertEquals } from "@std/assert";
 import { handler } from "./main.ts";
 
+function assertHeaderLinksHome(html: string) {
+  assertEquals(html.includes('href="/" aria-label="Go to homepage"'), true);
+}
+
 Deno.test("serves the home page", async () => {
   const response = await handler(new Request("http://localhost/"));
   const html = await response.text();
 
   assertEquals(response.status, 200);
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertHeaderLinksHome(html);
   assertEquals(html.includes("Tirna Chakraborty"), true);
   assertEquals(html.includes('href="/favicon.svg" rel="icon" type="image/svg+xml"'), true);
   assertEquals(html.includes('href="/site.css" rel="stylesheet"'), true);
@@ -51,6 +56,7 @@ Deno.test("serves the education page", async () => {
 
   assertEquals(response.status, 200);
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertHeaderLinksHome(html);
   assertEquals(html.includes("Academic Foundations"), true);
   assertEquals(html.includes("Massey University - Te Kunenga ki Pūrehuroa"), true);
   assertEquals(html.includes("Master of Business Studies Finance (Research)"), true);
@@ -65,6 +71,7 @@ Deno.test("serves the experience page", async () => {
 
   assertEquals(response.status, 200);
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertHeaderLinksHome(html);
   assertEquals(html.includes("Experience"), true);
   assertEquals(html.includes("Financial Crime Analyst (Risk and Remediation)"), true);
   assertEquals(html.includes("Anti-Money Laundering & Counter-Terrorist Financing"), true);
@@ -84,6 +91,7 @@ Deno.test("serves the skills page", async () => {
 
   assertEquals(response.status, 200);
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertHeaderLinksHome(html);
   assertEquals(html.includes("Skills Portfolio"), true);
   assertEquals(html.includes("PUBLISHED"), false);
   assertEquals(html.includes("SAVED"), false);
@@ -102,6 +110,7 @@ Deno.test("serves the projects page", async () => {
 
   assertEquals(response.status, 200);
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertHeaderLinksHome(html);
   assertEquals(html.includes("Finance Project Archive"), true);
   assertEquals(html.includes("Whirlpool & Fletcher DCF Models"), true);
   assertEquals(html.includes('href="/projects/whirlpool-fletcher-dcf"'), true);
@@ -123,6 +132,7 @@ Deno.test("serves the Whirlpool and Fletcher DCF model page", async () => {
 
   assertEquals(response.status, 200);
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertHeaderLinksHome(html);
   assertEquals(html.includes("Whirlpool & Fletcher DCF Models"), true);
   assertEquals(html.includes("Whirlpool Corporation - Stock Analysis Overview"), true);
   assertEquals(html.includes("Fletcher Building - Stock Analysis Overview"), true);
@@ -139,6 +149,7 @@ Deno.test("serves the economic regime research page", async () => {
 
   assertEquals(response.status, 200);
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertHeaderLinksHome(html);
   assertEquals(html.includes("Economic Regime Research"), true);
   assertEquals(html.includes("Fama-French Five Factor Model"), true);
   assertEquals(html.includes("Euclidean distance"), true);
@@ -154,6 +165,7 @@ Deno.test("serves the earnings momentum strategy page", async () => {
 
   assertEquals(response.status, 200);
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertHeaderLinksHome(html);
   assertEquals(html.includes("Earnings Momentum Strategy"), true);
   assertEquals(html.includes("composite EPS based momentum score"), true);
   assertEquals(html.includes("Methodology"), true);
@@ -168,6 +180,7 @@ Deno.test("serves the certifications page", async () => {
 
   assertEquals(response.status, 200);
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
+  assertHeaderLinksHome(html);
   assertEquals(html.includes("Certification Portfolio"), true);
   assertEquals(html.includes("Bloomberg Certified"), true);
   assertEquals(html.includes("LSEG Certified"), true);
