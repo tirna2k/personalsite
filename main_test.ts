@@ -26,7 +26,7 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes('href="/projects/whirlpool-fletcher-dcf"'), true);
   assertEquals(html.includes('href="/projects/economic-regime-research"'), true);
   assertEquals(html.includes('href="/projects/earnings-momentum-strategy"'), true);
-  assertEquals(html.includes("https://outlook.live.com/mail/0/deeplink/compose?to=tirna.rcb%40gmail.com"), true);
+  assertEquals(html.includes("https://mail.google.com/mail/?view=cm&fs=1&to=tirna.rcb%40gmail.com"), true);
   assertEquals(html.includes("Analytics & Certifications"), true);
 });
 

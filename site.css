@@ -129,9 +129,9 @@ body > header nav a[aria-current="page"]::after {
   left: 0;
 }
 
-.layout-content-container > header a[href*="outlook"],
+.layout-content-container > header a[href*="mail.google.com"],
 .layout-content-container > header a[href^="mailto:"],
-body > header a[href*="outlook"],
+body > header a[href*="mail.google.com"],
 body > header a[href^="mailto:"] {
   display: inline-flex !important;
   min-width: 84px !important;
@@ -152,8 +152,8 @@ body > header a[href^="mailto:"] {
   text-decoration: none !important;
 }
 
-.layout-content-container > header a[href*="outlook"] .material-symbols-outlined,
-body > header a[href*="outlook"] .material-symbols-outlined {
+.layout-content-container > header a[href*="mail.google.com"] .material-symbols-outlined,
+body > header a[href*="mail.google.com"] .material-symbols-outlined {
   font-size: 1rem !important;
 }
 
