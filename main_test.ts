@@ -154,6 +154,8 @@ Deno.test("serves the economic regime research page", async () => {
   assertEquals(html.includes("Fama-French Five Factor Model"), true);
   assertEquals(html.includes("Euclidean distance"), true);
   assertEquals(html.includes("mean squared error (MSE)"), true);
+  assertEquals(html.includes("R square"), true);
+  assertEquals(html.includes("R^2"), false);
   assertEquals(html.includes("advanced data techniques using R"), true);
 });
 
