@@ -22,12 +22,16 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes("Open Analyst, Risk and Remediation experience page"), true);
   assertEquals(html.includes("Feb 2025 - Jul 2026"), true);
   assertEquals(html.includes("Open Massey University education page"), true);
+  assertEquals(html.match(/Auckland, New Zealand/g)?.length, 1);
+  assertEquals(html.indexOf("Auckland, New Zealand") > html.indexOf("Massey University</h3>"), true);
+  assertEquals(html.includes("flex flex-wrap justify-between items-center gap-4"), true);
   assertEquals(html.includes('href="/experience">Experience'), true);
   assertEquals(html.includes('href="/skills">Skills'), true);
   assertEquals(html.includes("Open Analytics and Certifications certification page"), true);
   assertEquals(html.includes('href="/certifications">Certifications'), true);
   assertEquals(html.includes('href="/projects/whirlpool-fletcher-dcf"'), true);
   assertEquals(html.includes('href="/projects/economic-regime-research"'), true);
+  assertEquals(html.includes(">Economic Regime Research</h3>"), true);
   assertEquals(html.includes('href="/projects/earnings-momentum-strategy"'), true);
   assertEquals(html.includes("https://mail.google.com/mail/?view=cm&fs=1&to=tirna.rcb%40gmail.com"), true);
   assertEquals(html.includes("Analytics & Certifications"), true);
@@ -129,8 +133,9 @@ Deno.test("serves the projects page", async () => {
   assertEquals(html.includes("NatWest Group / Risk Analytics"), true);
   assertEquals(html.includes("[ METHODS ]"), false);
   assertEquals(html.includes("[ OUTCOMES ]"), false);
-  assertEquals(html.includes("The Limits of Similarity-Based Macro-Regime Forecasting"), true);
-  assertEquals(html.includes("Economic Regime Classification"), false);
+  assertEquals(html.includes(">Economic Regime Research</h3>"), true);
+  assertEquals(html.includes(">The Limits of Similarity-Based Macro-Regime Forecasting</h3>"), false);
+  assertEquals(html.includes('aria-label="Open Economic Regime Research page"'), true);
   assertEquals(html.includes('href="/projects/economic-regime-research"'), true);
   assertEquals(html.includes("https://www.researchgate.net/publication/408536031_The_Limits_of_Similarity-Based_Macro-Regime_Forecasting_Evidence_from_Factors_Industry_Portfolios_and_Individual_Stocks"), true);
   assertEquals(html.includes("Read the full research"), true);
@@ -164,13 +169,18 @@ Deno.test("serves the economic regime research page", async () => {
   assertEquals(response.status, 200);
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
   assertHeaderLinksHome(html);
-  assertEquals(html.includes("Economic Regime Research"), true);
-  assertEquals(html.includes("Fama-French Five Factor Model"), true);
-  assertEquals(html.includes("Euclidean distance"), true);
-  assertEquals(html.includes("mean squared error (MSE)"), true);
-  assertEquals(html.includes("R square"), true);
-  assertEquals(html.includes("R^2"), false);
-  assertEquals(html.includes("advanced data techniques using R"), true);
+  assertEquals(html.includes(">The Limits of Similarity-Based Macro-Regime Forecasting</h1>"), true);
+  assertEquals(html.includes("This paper examines whether similarity-based macro-regime forecasting"), true);
+  assertEquals(html.includes("the six Fama–French factor portfolios"), true);
+  assertEquals(html.includes("individual CRSP stocks over 1985 to 2024"), true);
+  assertEquals(html.includes("approximately 13.40 percent in panel out-of-sample R²"), true);
+  assertEquals(html.includes("surviving only under the Clark and West adjustment"), true);
+  assertEquals(html.includes("observable characteristics explain less than one percent"), true);
+  assertEquals(html.includes("the deterioration is structural rather than sample-specific"), true);
+  assertEquals(html.includes("too coarse for individual-stock forecasting unless combined with firm-level information"), true);
+  assertEquals(html.includes("https://www.researchgate.net/publication/408536031_The_Limits_of_Similarity-Based_Macro-Regime_Forecasting_Evidence_from_Factors_Industry_Portfolios_and_Individual_Stocks"), true);
+  assertEquals(html.includes("Read the full research"), true);
+  assertEquals(html.includes("This research project explores how changing macroeconomic conditions"), false);
 });
 
 Deno.test("serves the earnings momentum strategy page", async () => {
