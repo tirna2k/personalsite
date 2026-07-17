@@ -16,8 +16,9 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes('href="/favicon.svg" rel="icon" type="image/svg+xml"'), true);
   assertEquals(html.includes('href="/site.css" rel="stylesheet"'), true);
   assertEquals(html.includes("Finance Analyst & Research Postgraduate"), true);
-  assertEquals(html.includes("Financial Crime Analyst"), true);
-  assertEquals(html.includes("Open Financial Crime Analyst experience page"), true);
+  assertEquals(html.includes("Analyst, Risk and Remediation"), true);
+  assertEquals(html.includes("Open Analyst, Risk and Remediation experience page"), true);
+  assertEquals(html.includes("Feb 2025 - Jul 2026"), true);
   assertEquals(html.includes("Open Massey University education page"), true);
   assertEquals(html.includes('href="/experience">Experience'), true);
   assertEquals(html.includes('href="/skills">Skills'), true);
@@ -73,7 +74,14 @@ Deno.test("serves the experience page", async () => {
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
   assertHeaderLinksHome(html);
   assertEquals(html.includes("Experience"), true);
-  assertEquals(html.includes("Financial Crime Analyst (Risk and Remediation)"), true);
+  assertEquals(html.includes("Analyst, Risk and Remediation"), true);
+  assertEquals(html.includes("Financial Crime Analyst (Risk and Remediation)"), false);
+  assertEquals(html.includes("Analyzed high volume financial transaction and customer datasets"), true);
+  assertEquals(html.includes("Prepared clear, well written documentation and analytical narratives"), true);
+  assertEquals(html.includes("Developed dashboards and KPIs to monitor volumes, aging, turnaround, and quality"), true);
+  assertEquals(html.includes("Improved monitoring processes through system testing, root cause analysis"), true);
+  assertEquals(html.includes("Partnered with legal, compliance, operations, and technology teams"), true);
+  assertEquals(html.includes("Standardized and automated investigation workflows"), true);
   assertEquals(html.includes("Anti-Money Laundering & Counter-Terrorist Financing"), true);
   assertEquals(html.includes("Customer Due Diligence & Transaction Monitoring"), true);
   assertEquals(html.includes("Strategic In-Life Remediation & Customer Due Diligence"), false);
@@ -81,6 +89,7 @@ Deno.test("serves the experience page", async () => {
   assertEquals(html.includes("Massey University Investment Club"), true);
   assertEquals(html.includes("Massey University Student Investment Fund"), true);
   assertEquals(html.includes("Fund Manager"), true);
+  assertEquals(html.match(/Feb 2025 - Jul 2026/g)?.length, 2);
   assertEquals(html.includes("View Related Projects"), false);
   assertEquals(html.includes("supporting trade execution"), true);
 });
