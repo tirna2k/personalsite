@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Economic Regime Research - Tirna Chakraborty</title>
+  <title>The Limits of Similarity-Based Macro-Regime Forecasting - Tirna Chakraborty</title>
   <link href="/favicon.svg" rel="icon" type="image/svg+xml">
   <link href="/site.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -120,7 +120,7 @@
                   <span class="rounded border border-primary/20 bg-primary/5 px-2 py-1 font-mono text-xs uppercase tracking-widest text-primary">[ RESEARCH ]</span>
                   <span class="font-mono text-xs text-text-muted">R / TIME SERIES / SIMILARITY SCORING</span>
                 </div>
-                <h1 class="font-heading mb-8 text-5xl leading-[1.1] tracking-tight text-text-main sm:text-6xl">Economic Regime Research</h1>
+                <h1 class="font-heading mb-8 text-5xl leading-[1.1] tracking-tight text-text-main sm:text-6xl">The Limits of Similarity-Based Macro-Regime Forecasting</h1>
                 <div class="mb-8 flex items-center justify-between border-y border-border-color py-6">
                   <div class="flex items-center gap-4">
                     <div class="flex h-12 w-12 items-center justify-center rounded-full bg-surface-light text-primary ring-1 ring-border-color">
@@ -135,44 +135,13 @@
                 </div>
               </header>
 
-              <div class="mb-16 space-y-6 text-[18px] leading-[28px] text-text-main">
-                <p class="drop-cap">This research project explores how changing macroeconomic conditions influence asset returns and whether these shifts can be used to improve return forecasting. Rather than relying solely on traditional asset pricing frameworks such as the Fama-French Five Factor Model, the study adopts a dynamic, data-driven approach that incorporates a broader set of economic indicators.</p>
+              <div class="mb-16 space-y-8 text-[18px] leading-[28px] text-text-main">
+                <p class="drop-cap">This paper examines whether similarity-based macro-regime forecasting, which conditions expected returns on the most similar historical macroeconomic states, retains predictive power as the forecasting object becomes less aggregated. We apply a fixed seven-variable macro-state representation, a Euclidean similarity ranking, and a consistent out-of-sample design to three return universes: the six Fama–French factor portfolios, the 49 Fama–French industry portfolios, and individual CRSP stocks over 1985 to 2024. The central finding is negative and economically material: at the individual-stock level, the regime model underperforms an expanding-window historical mean benchmark by approximately 13.40 percent in panel out-of-sample R², with a hit ratio barely above chance and gross ranking profits that are eliminated under realistic transaction costs. This failure contrasts sharply with the upper levels of the hierarchy. The framework reproduces the qualitative factor-level pattern of Mulliner et al. (2025), including a positive spread between the most and least similar state portfolios, while industry-level predictability is weak and selective, surviving only under the Clark and West adjustment and concentrating in cyclical sectors with high operating leverage. Cross-sectional tests show the model performs relatively better for larger and more actively traded stocks and worse for volatile stocks, yet observable characteristics explain less than one percent of the variation in stock-level performance, indicating that the deterioration is structural rather than sample-specific. The contribution is a boundary test of macro-regime similarity as a forecasting technology: the signal contains genuine information about systematic return components but is too coarse for individual-stock forecasting unless combined with firm-level information.</p>
 
-                <p>A comprehensive set of macro-financial state variables is constructed, including equity market performance, the yield curve, commodity prices such as oil and copper, monetary policy indicators, market volatility and stock-bond correlation. These variables are systematically transformed using rolling statistical techniques, including standardisation over a 10-year window and winsorisation, to ensure consistency and robustness across time.</p>
-
-                <figure class="my-10">
-                  <img alt="Macro shot of digital stock tickers and financial data streams" class="h-[400px] w-full rounded border border-border-color object-cover grayscale transition-all duration-500 hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBix8ZmBhcjBd9k6bXPhYLLEZJ3Dcl_s7liplgrUxc6VfYqxa1Lpc0YwK2JPgfcz6xkmbJQTZC4NJagwE0zDm-Grr2-h6SlUEx0F-l1QNnX_2ZNsOTMguTf-Cez76okhDiuMVR_iD096HJail6e5kA6UaMG_QJk99u5vf6C2MMDzB-1dYVazPmhgbkFuCGKpq24Nvxt6rRuBUoCSM3oSg17IDXxxTBzOczIGJGsMtdTWxFZZfU87DBuIQCI7CeXUOQek046q5puRVyc">
-                </figure>
-
-                <p>The core methodology is built around a distance-based similarity framework. For each point in time, the current economic environment is compared with historical periods using Euclidean distance. The most similar historical regimes are identified, and their subsequent returns are used to generate forward-looking expectations. This enables the model to adapt to evolving macroeconomic conditions rather than assuming static relationships between risk factors and returns.</p>
-
-                <blockquote class="my-10 border-l-4 border-primary pl-6 font-heading text-2xl italic leading-snug text-text-main">
-                  "The model treats macro context as a living state, comparing today's conditions with the historical periods they most closely resemble."
-                </blockquote>
-
-                <p>The framework is applied across multiple levels of financial analysis. At the factor level, timing strategies are implemented across key risk factors, including momentum, to evaluate whether regime-based signals can enhance performance. The analysis is further extended to industry portfolios and individual stocks, with predictive accuracy assessed using out-of-sample metrics such as mean squared error (MSE) and out-of-sample R square.</p>
-
-                <p>Overall, the project highlights the importance of macroeconomic context in asset pricing and demonstrates how regime-aware modelling can improve forecasting performance. It also reflects strong capabilities in quantitative analysis, financial modelling and the application of advanced data techniques using R.</p>
-
-                <div class="my-8 overflow-hidden rounded-sm border border-border-color bg-surface-light">
-                  <div class="flex items-center border-b border-border-color bg-background-light px-4 py-2">
-                    <span class="font-mono text-xs uppercase tracking-wider text-text-muted">Method Snapshot</span>
-                  </div>
-                  <div class="grid grid-cols-1 gap-0 sm:grid-cols-3">
-                    <div class="border-b border-border-color p-4 sm:border-b-0 sm:border-r">
-                      <p class="font-mono text-xs uppercase tracking-wider text-primary">Variables</p>
-                      <p class="mt-2 text-base leading-snug text-text-muted">Yield curve, commodities, volatility, policy indicators and stock-bond correlation.</p>
-                    </div>
-                    <div class="border-b border-border-color p-4 sm:border-b-0 sm:border-r">
-                      <p class="font-mono text-xs uppercase tracking-wider text-primary">Similarity</p>
-                      <p class="mt-2 text-base leading-snug text-text-muted">Euclidean distance used to identify historical macro regimes most similar to the present.</p>
-                    </div>
-                    <div class="p-4">
-                      <p class="font-mono text-xs uppercase tracking-wider text-primary">Testing</p>
-                      <p class="mt-2 text-base leading-snug text-text-muted">Out-of-sample MSE and R square used to evaluate forecasting accuracy.</p>
-                    </div>
-                  </div>
-                </div>
+                <a class="inline-flex items-center gap-2 rounded bg-primary px-5 py-3 font-mono text-xs font-medium uppercase tracking-widest text-white transition-colors hover:bg-emerald-700" href="https://www.researchgate.net/publication/408536031_The_Limits_of_Similarity-Based_Macro-Regime_Forecasting_Evidence_from_Factors_Industry_Portfolios_and_Individual_Stocks" target="_blank" rel="noopener noreferrer">
+                  <span>Read the full research</span>
+                  <span class="material-symbols-outlined" style="font-size: 18px;">open_in_new</span>
+                </a>
               </div>
 
               <div class="mb-12 flex items-center justify-center gap-8 border-t border-border-color py-8">
