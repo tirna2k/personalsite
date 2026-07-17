@@ -16,6 +16,8 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes('href="/favicon.svg" rel="icon" type="image/svg+xml"'), true);
   assertEquals(html.includes('href="/site.css" rel="stylesheet"'), true);
   assertEquals(html.includes("Finance Analyst & Research Postgraduate"), true);
+  assertEquals(html.includes("Analytical finance postgraduate from Massey University with over three years of NatWest Group experience"), true);
+  assertEquals(html.includes("Analytical finance postgraduate at Massey University with over three years of NatWest Group experience"), false);
   assertEquals(html.includes("Analyst, Risk and Remediation"), true);
   assertEquals(html.includes("Open Analyst, Risk and Remediation experience page"), true);
   assertEquals(html.includes("Feb 2025 - Jul 2026"), true);
@@ -127,8 +129,11 @@ Deno.test("serves the projects page", async () => {
   assertEquals(html.includes("NatWest Group / Risk Analytics"), true);
   assertEquals(html.includes("[ METHODS ]"), false);
   assertEquals(html.includes("[ OUTCOMES ]"), false);
-  assertEquals(html.includes("Economic Regime Classification"), true);
+  assertEquals(html.includes("The Limits of Similarity-Based Macro-Regime Forecasting"), true);
+  assertEquals(html.includes("Economic Regime Classification"), false);
   assertEquals(html.includes('href="/projects/economic-regime-research"'), true);
+  assertEquals(html.includes("https://www.researchgate.net/publication/408536031_The_Limits_of_Similarity-Based_Macro-Regime_Forecasting_Evidence_from_Factors_Industry_Portfolios_and_Individual_Stocks"), true);
+  assertEquals(html.includes("Read the full research"), true);
   assertEquals(html.includes("Earnings Momentum Strategy"), true);
   assertEquals(html.includes('href="/projects/earnings-momentum-strategy"'), true);
 });
