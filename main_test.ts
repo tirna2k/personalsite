@@ -155,6 +155,7 @@ Deno.test("serves the Whirlpool and Fletcher DCF model page", async () => {
   assertEquals(html.includes("Whirlpool & Fletcher DCF Models"), true);
   assertEquals(html.includes("Whirlpool Corporation - Stock Analysis Overview"), true);
   assertEquals(html.includes("Fletcher Building - Stock Analysis Overview"), true);
+  assertEquals(html.includes("Minimal financial modelling dashboard with valuation tables"), false);
   assertEquals(html.includes("Fig 1. Valuation work combined"), false);
   assertEquals(html.includes("DCF, DDM and P/E multiple analysis"), true);
   assertEquals(html.includes("Framework Snapshot"), true);
@@ -198,6 +199,7 @@ Deno.test("serves the earnings momentum strategy page", async () => {
   assertEquals(html.includes("Results"), true);
   assertEquals(html.includes("432.21%"), true);
   assertEquals(html.includes("Sharpe ratio of 0.88"), true);
+  assertEquals(html.includes("Professional financial data visualization showing market depth and liquidity concentration."), false);
 });
 
 Deno.test("serves the certifications page", async () => {
