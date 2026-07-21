@@ -14,7 +14,10 @@ export async function handler(request: Request): Promise<Response> {
   const url = new URL(request.url);
 
   if (url.pathname === "/") {
-    const html = await Deno.readTextFile(homePage);
+    const html = (await Deno.readTextFile(homePage)).replace(
+      "Finance Research / Risk Analysis / Auckland",
+      "Corporate Finance / Investment Banking",
+    );
 
     return new Response(html, {
       headers: {
@@ -134,7 +137,7 @@ export async function handler(request: Request): Promise<Response> {
     });
   }
 
-    return new Response("Not Found", { status: 404 });
+  return new Response("Not Found", { status: 404 });
 }
 
 if (import.meta.main) {
