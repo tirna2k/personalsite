@@ -10,13 +10,22 @@ const valuationPage = new URL("./valuation.html", import.meta.url);
 const regimePage = new URL("./regime.html", import.meta.url);
 const momentumPage = new URL("./momentum.html", import.meta.url);
 
+const oldNatWestTitle = "Analyst, Risk and Remediation";
+const newNatWestTitle = "Analyst, Risk and Compliance";
+
+function updateNatWestTitle(html: string): string {
+  return html.replaceAll(oldNatWestTitle, newNatWestTitle);
+}
+
 export async function handler(request: Request): Promise<Response> {
   const url = new URL(request.url);
 
   if (url.pathname === "/") {
-    const html = (await Deno.readTextFile(homePage)).replace(
-      "Finance Research / Risk Analysis / Auckland",
-      "Corporate Finance / Investment Banking",
+    const html = updateNatWestTitle(
+      (await Deno.readTextFile(homePage)).replace(
+        "Finance Research / Risk Analysis / Auckland",
+        "Corporate Finance / Investment Banking",
+      ),
     );
 
     return new Response(html, {
@@ -108,7 +117,7 @@ export async function handler(request: Request): Promise<Response> {
   }
 
   if (url.pathname === "/experience" || url.pathname === "/experience/") {
-    const html = await Deno.readTextFile(experiencePage);
+    const html = updateNatWestTitle(await Deno.readTextFile(experiencePage));
 
     return new Response(html, {
       headers: {
