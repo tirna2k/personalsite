@@ -18,8 +18,10 @@ Deno.test("serves the home page", async () => {
   assertEquals(html.includes("Finance Analyst & Research Postgraduate"), true);
   assertEquals(html.includes("Analytical finance postgraduate from Massey University with over three years of NatWest Group experience"), true);
   assertEquals(html.includes("Analytical finance postgraduate at Massey University with over three years of NatWest Group experience"), false);
-  assertEquals(html.includes("Analyst, Risk and Remediation"), true);
-  assertEquals(html.includes("Open Analyst, Risk and Remediation experience page"), true);
+  assertEquals(html.includes("Analyst, Risk and Compliance"), true);
+  assertEquals(html.includes("Analyst, Risk and Remediation"), false);
+  assertEquals(html.includes("Open Analyst, Risk and Compliance experience page"), true);
+  assertEquals(html.includes("Open Analyst, Risk and Remediation experience page"), false);
   assertEquals(html.includes("Feb 2025 - Jul 2026"), true);
   assertEquals(html.includes("Open Massey University education page"), true);
   assertEquals(html.match(/Auckland, New Zealand/g)?.length, 1);
@@ -82,7 +84,8 @@ Deno.test("serves the experience page", async () => {
   assertEquals(response.headers.get("content-type"), "text/html; charset=utf-8");
   assertHeaderLinksHome(html);
   assertEquals(html.includes("Experience"), true);
-  assertEquals(html.includes("Analyst, Risk and Remediation"), true);
+  assertEquals(html.includes("Analyst, Risk and Compliance"), true);
+  assertEquals(html.includes("Analyst, Risk and Remediation"), false);
   assertEquals(html.includes("Financial Crime Analyst (Risk and Remediation)"), false);
   assertEquals(html.includes("Investigated complex financial crime cases including money laundering, terrorist financing, fraud, and bribery and corruption typologies"), true);
   assertEquals(html.includes("Assessed customer, product, geographic, and channel risk factors"), true);
